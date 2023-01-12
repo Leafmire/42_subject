@@ -1,0 +1,10 @@
+bash_source
+*.json
+*.a
+*.cache
+*.clangd
+*.o
+*.vscode
+*.dSYM
+*.flag
+minishell

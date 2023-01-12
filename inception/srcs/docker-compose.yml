@@ -1,0 +1,97 @@
+version: '3.0'
+
+services:
+  mariadb:
+    env_file: 
+      - ./.env
+    container_name: mariadb
+    restart: on-failure
+    build:
+      context: ./requirements/mariadb/
+      dockerfile: Dockerfile
+    volumes:
+      - db_volume:/var/lib/mysql
+    expose:
+      - "3306"
+    networks:
+      - my_net
+
+  nginx:
+    depends_on:
+      - wordpress
+    container_name: nginx
+    restart: on-failure
+    build:
+      context: ./requirements/nginx/
+      dockerfile: Dockerfile
+    volumes:
+      - wordpress_volume:/var/www/html
+    ports:
+      - "443:443"
+    networks:
+      - my_net
+
+  wordpress:
+    env_file: 
+      - ./.env
+    depends_on:
+      - mariadb
+    container_name: wordpress
+    restart: on-failure
+    build:
+      context: ./requirements/wordpress/
+      dockerfile: Dockerfile
+    volumes:
+      - wordpress_volume:/var/www/html
+    expose:
+      - "9000"
+    networks:
+      - my_net
+
+  redis:
+    env_file: 
+      - ./.env
+    container_name: redis
+    restart: on-failure
+    build:
+      context: ./requirements/bonus/redis
+      dockerfile: Dockerfile
+    expose:
+      - "6379"
+    networks:
+      - my_net
+
+  ftp-server:
+    env_file: 
+      - ./.env
+    container_name: ftp-server
+    restart: on-failure
+    build:
+      context: ./requirements/bonus/ftp-server
+      dockerfile: Dockerfile
+    volumes:
+      - wordpress_volume:/var/www/html
+    ports:
+      - "21:21"
+      - "20020-20021:20020-20021"
+    networks:
+      - my_net
+
+volumes:
+    wordpress_volume:
+      driver: local
+      driver_opts:
+        o: bind
+        type: none
+        device: /Users/gson/data/web
+
+    db_volume:
+      driver: local
+      driver_opts:
+        o: bind
+        type: none
+        device: /Users/gson/data/db
+
+networks:
+  my_net:
+    driver: bridge

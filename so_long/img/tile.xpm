@@ -1,0 +1,34 @@
+/* XPM */
+static char *result[] = {
+/* columns rows colors chars-per-pixel */
+"24 24 4 1 ",
+"  c #0073A5",
+". c #0894B5",
+"X c #10B5CE",
+"o c #18CEDE",
+/* pixels */
+"... .....ooXX...XoX.. .X",
+"Xo..X.o.oX..X.XX.XoXX...",
+"Xoo .XoXX.Xo...XooXX. XX",
+".oX.XXXX..XoX...XXXoo.Xo",
+"XX..Xo.XX...oXX..XooX.oo",
+"X.. .X..XX.X.X..X.XX..Xo",
+"oX. ..X...X...XXX.X.. .X",
+"   .  ..   .  . .  .    ",
+"...XooXX.X. ..XXX.. .X..",
+"X...oXoX..X..XooXo. .oX.",
+"X.X.X.ooX.X...XoXXX.....",
+"oXo...XXXXo X..Xo.X..XX.",
+"ooXX.XXX.oX XoXXX...X..X",
+"XX..XoX..o...Xo.X.X .X.X",
+"X....o...X. ..XX... ..X.",
+" ..  .  .     ....     .",
+".XXooXX. .X....XoX..X.. ",
+"XX.XoX.X XoXX.XXX..XooX ",
+"XX..XoX..oXXoX.XXX.ooXX.",
+"X...XXXX.oooXXoXXXXXXXX.",
+"o.X..XX..XXooXooX.XX.X..",
+"oo...X.. X.XXXoX..X.... ",
+"Xo..XX.. ....XX.....X.. ",
+"   .    .   .....      ."
+};
